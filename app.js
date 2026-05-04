@@ -6,9 +6,10 @@ let scenes = [];
 let currentIndex = 0;
 let currentScene = null;
 
-const timeline = document.getElementById("timeline");
 const sidebarList = document.getElementById("sidebarList");
 const floorplan = document.getElementById("floorplan");
+
+const mapBtn = document.getElementById("mapBtn");
 
 /* LOAD */
 fetch("rooms.json")
@@ -24,23 +25,12 @@ fetch("rooms.json")
 function buildUI() {
   scenes.forEach((scene, index) => {
 
-    // sidebar
     const sideItem = document.createElement("div");
     sideItem.className = "item";
     sideItem.dataset.index = index;
     sideItem.textContent = scene.label;
     sidebarList.appendChild(sideItem);
 
-    // timeline
-    const item = document.createElement("div");
-    item.className = "item";
-    item.dataset.index = index;
-
-    item.innerHTML =
-      '<div class="dot"></div>' +
-      '<div class="label">' + scene.label + '</div>';
-
-    timeline.appendChild(item);
   });
 }
 
@@ -84,12 +74,15 @@ function goTo(index) {
   currentIndex = index;
 
   updateUI(index);
+
+  /* 🔥 sulje kartta kun valitaan huone */
+  floorplan.classList.remove("open");
 }
 
 /* UI */
 function updateUI(index) {
 
-  document.querySelectorAll(".item").forEach(el => {
+  document.querySelectorAll("#sidebarList .item").forEach(el => {
     el.classList.toggle("active", parseInt(el.dataset.index) === index);
   });
 
@@ -101,11 +94,18 @@ function updateUI(index) {
 /* EVENTS */
 function attachEvents() {
 
-  document.querySelectorAll(".item").forEach(item => {
+  // sidebar
+  document.querySelectorAll("#sidebarList .item").forEach(item => {
     item.onclick = () => goTo(parseInt(item.dataset.index));
   });
 
+  // floorplan
   document.querySelectorAll(".hotspot").forEach(h => {
     h.onclick = () => goTo(parseInt(h.dataset.index));
+  });
+
+  // 🔥 MAP TOGGLE
+  mapBtn.addEventListener("click", () => {
+    floorplan.classList.toggle("open");
   });
 }
