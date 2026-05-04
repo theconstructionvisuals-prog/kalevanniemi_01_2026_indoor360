@@ -1,5 +1,5 @@
 [
-  { "file": "olohuone.jpg", "label": "Olohuone", "mapX": 30, "mapY": 50 },
-  { "file": "keittio.jpg", "label": "Keittiö", "mapX": 55, "mapY": 45 },
-  { "file": "makuuhuone.jpg", "label": "Makuuhuone", "mapX": 70, "mapY": 65 }
+  { "file": "viikko01_2026.jpg", "label": "Olohuone", "mapX": 30, "mapY": 50 },
+  { "file": "viikko03_2026.jpg", "label": "Keittiö", "mapX": 55, "mapY": 45 },
+  { "file": "viikko05_2026.jpg", "label": "Makuuhuone", "mapX": 70, "mapY": 65 }
 ]
