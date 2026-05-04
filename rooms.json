@@ -1,9 +1,5 @@
 [
-{ "file": "viikko01_26.jpg", "label": "1. kerros, aula" },
-{ "file": "viikko03_26.jpg", "label": "1. kerros, ravintola" },
-{ "file": "viikko05_26.jpg", "label": "1. kerros, katsomoportaat" },
-{ "file": "viikko07_26.jpg", "label": "2. kerros, opetussolu" },
-{ "file": "viikko09_26.jpg", "label": "2. kerros, liikuntahalli" },
-{ "file": "viikko11_26.jpg", "label": "2. kerros, aula" },
-{ "file": "viikko13_26.jpg", "label": "3. kerros, saunatilat" }
+  { "file": "olohuone.jpg", "label": "Olohuone", "mapX": 30, "mapY": 50 },
+  { "file": "keittio.jpg", "label": "Keittiö", "mapX": 55, "mapY": 45 },
+  { "file": "makuuhuone.jpg", "label": "Makuuhuone", "mapX": 70, "mapY": 65 }
 ]
