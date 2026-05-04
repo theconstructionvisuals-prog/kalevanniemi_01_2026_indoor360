@@ -1,9 +1,9 @@
 [
-{ "file": "viikko01_26.jpg", "label": "Viikko 01 / 2026" },
-{ "file": "viikko03_26.jpg", "label": "Viikko 03 / 2026" },
-{ "file": "viikko05_26.jpg", "label": "Viikko 05 / 2026" },
-{ "file": "viikko07_26.jpg", "label": "Viikko 07 / 2026" },
-{ "file": "viikko09_26.jpg", "label": "Viikko 09 / 2026" },
-{ "file": "viikko11_26.jpg", "label": "Viikko 11 / 2026" },
-{ "file": "viikko13_26.jpg", "label": "Viikko 13 / 2026" }
+{ "file": "viikko01_26.jpg", "label": "1. kerros, aula" },
+{ "file": "viikko03_26.jpg", "label": "1. kerros, ravintola" },
+{ "file": "viikko05_26.jpg", "label": "1. kerros, katsomoportaat" },
+{ "file": "viikko07_26.jpg", "label": "2. kerros, opetussolu" },
+{ "file": "viikko09_26.jpg", "label": "2. kerros, liikuntahalli" },
+{ "file": "viikko11_26.jpg", "label": "2. kerros, aula" },
+{ "file": "viikko13_26.jpg", "label": "3. kerros, saunatilat" }
 ]
