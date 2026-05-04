@@ -1,9 +1,5 @@
 [
-{ "file": "viikko01_26.jpg", "label": "Viikko 01 / 2026" },
-{ "file": "viikko03_26.jpg", "label": "Viikko 03 / 2026" },
-{ "file": "viikko05_26.jpg", "label": "Viikko 05 / 2026" },
-{ "file": "viikko07_26.jpg", "label": "Viikko 07 / 2026" },
-{ "file": "viikko09_26.jpg", "label": "Viikko 09 / 2026" },
-{ "file": "viikko11_26.jpg", "label": "Viikko 11 / 2026" },
-{ "file": "viikko13_26.jpg", "label": "Viikko 13 / 2026" }
+  { "file": "viikko01_2026.jpg", "label": "Olohuone", "mapX": 30, "mapY": 50 },
+  { "file": "viikko03_2026.jpg", "label": "Keittiö", "mapX": 55, "mapY": 45 },
+  { "file": "viikko05_2026.jpg", "label": "Makuuhuone", "mapX": 70, "mapY": 65 }
 ]
