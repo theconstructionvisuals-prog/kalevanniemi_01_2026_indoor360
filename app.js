@@ -35,7 +35,7 @@ preloadImage(index + 2);
 }
 
 // LOAD
-fetch("weeks.json")
+fetch("rooms.json")
 .then(res => res.json())
 .then(data => {
 scenes = data;
