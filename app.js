@@ -12,6 +12,10 @@ let scenes = [];
 let currentIndex = 0;
 let currentScene = null;
 
+/* ACTIVE FLOOR */
+
+let currentFloor = "ground";
+
 const sidebarList =
   document.getElementById("sidebarList");
 
@@ -78,6 +82,10 @@ function buildFloorplan() {
 
   scenes.forEach((scene, index) => {
 
+    /* SHOW ONLY ACTIVE FLOOR */
+
+    if (scene.floor !== currentFloor) return;
+
     const dot =
       document.createElement("div");
 
@@ -87,9 +95,13 @@ function buildFloorplan() {
     dot.style.left = scene.mapX + "%";
     dot.style.top = scene.mapY + "%";
 
+    dot.onclick = () => goTo(index);
+
     floorplanWrapper.appendChild(dot);
 
   });
+
+  updateUI(currentIndex);
 
 }
 
@@ -188,17 +200,6 @@ function attachEvents() {
 
     });
 
-  /* HOTSPOTS */
-
-  document
-    .querySelectorAll(".hotspot")
-    .forEach(h => {
-
-      h.onclick = () =>
-        goTo(parseInt(h.dataset.index));
-
-    });
-
   /* FLOOR BUTTONS */
 
   document
@@ -207,7 +208,9 @@ function attachEvents() {
 
       btn.addEventListener("click", () => {
 
-        const floor = btn.dataset.floor;
+        /* SET ACTIVE FLOOR */
+
+        currentFloor = btn.dataset.floor;
 
         /* OPEN FLOORPLAN */
 
@@ -216,7 +219,12 @@ function attachEvents() {
         /* CHANGE IMAGE */
 
         floorplanImage.src =
-          floorplans[floor] + "?v=" + Date.now();
+          floorplans[currentFloor] +
+          "?v=" + Date.now();
+
+        /* REBUILD HOTSPOTS */
+
+        buildFloorplan();
 
         /* ACTIVE BUTTON */
 
