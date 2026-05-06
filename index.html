@@ -93,30 +93,53 @@ body {
   display: flex;
   flex-direction: column;
 
-  gap: 8px;
+  gap: 10px;
 }
 
 .floorBtn {
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(6px);
+  min-width: 140px;
 
-  color: rgba(255,255,255,0.7);
+  padding: 12px 16px;
 
-  border: none;
-  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
 
-  padding: 10px 14px;
+  background: rgba(20,20,20,0.28);
+  backdrop-filter: blur(10px);
+
+  color: rgba(255,255,255,0.62);
+
+  font-size: 13px;
+  letter-spacing: 0.04em;
+
+  text-align: left;
 
   cursor: pointer;
 
   transition:
-    background 0.2s ease,
-    color 0.2s ease;
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.floorBtn:hover {
+  background: rgba(255,255,255,0.08);
+
+  color: rgba(255,255,255,0.88);
+
+  transform: translateX(2px);
 }
 
 .floorBtn.active {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.12);
+
+  border-color: rgba(255,255,255,0.18);
+
   color: white;
+
+  box-shadow:
+    inset 2px 0 0 rgba(255,255,255,0.9);
 }
 
 /* FLOORPLAN */
@@ -287,19 +310,19 @@ body {
 
 <div id="floorButtons">
 
-  <button class="floorBtn active">
-    Pohjakuva
+  <button class="floorBtn active" data-floor="ground">
+    Maataso
   </button>
 
-  <button class="floorBtn">
+  <button class="floorBtn" data-floor="floor1">
     1. kerros
   </button>
 
-  <button class="floorBtn">
+  <button class="floorBtn" data-floor="floor2">
     2. kerros
   </button>
 
-  <button class="floorBtn">
+  <button class="floorBtn" data-floor="floor3">
     3. kerros
   </button>
 
@@ -310,7 +333,7 @@ body {
 <div id="floorplan" class="open">
 
   <div id="floorplanWrapper">
-    <img src="floorplan.png">
+    <img id="floorplanImage" src="floorplan-maa.png">
   </div>
 
 </div>
