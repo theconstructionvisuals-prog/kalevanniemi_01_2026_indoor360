@@ -93,48 +93,56 @@ body {
   display: flex;
   flex-direction: column;
 
-  gap: 10px;
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: rgba(18,18,18,0.42);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 .floorBtn {
-  min-width: 140px;
+  min-width: 150px;
 
-  padding: 12px 16px;
+  padding: 14px 18px;
 
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 
-  background: rgba(20,20,20,0.28);
-  backdrop-filter: blur(10px);
+  background: transparent;
 
-  color: rgba(255,255,255,0.62);
+  color: rgba(255,255,255,0.55);
 
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 
   text-align: left;
 
   cursor: pointer;
 
   transition:
-    background 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+    background 0.22s ease,
+    color 0.22s ease,
+    padding-left 0.22s ease;
+}
+
+.floorBtn:last-child {
+  border-bottom: none;
 }
 
 .floorBtn:hover {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
 
   color: rgba(255,255,255,0.88);
 
-  transform: translateX(2px);
+  padding-left: 22px;
 }
 
 .floorBtn.active {
-  background: rgba(255,255,255,0.12);
-
-  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
 
   color: white;
 
@@ -197,6 +205,8 @@ body {
   align-items: center;
 }
 
+/* FLOORPLAN IMAGE */
+
 #floorplanWrapper img {
   max-width: 100%;
   max-height: 100%;
@@ -207,6 +217,8 @@ body {
   display: block;
 
   opacity: 0.5;
+
+  border-radius: 18px;
 }
 
 /* HOTSPOTS */
@@ -311,19 +323,19 @@ body {
 <div id="floorButtons">
 
   <button class="floorBtn active" data-floor="ground">
-    Maataso
+    MAATASO
   </button>
 
   <button class="floorBtn" data-floor="floor1">
-    1. kerros
+    1. KERROS
   </button>
 
   <button class="floorBtn" data-floor="floor2">
-    2. kerros
+    2. KERROS
   </button>
 
   <button class="floorBtn" data-floor="floor3">
-    3. kerros
+    3. KERROS
   </button>
 
 </div>
