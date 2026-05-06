@@ -1,4 +1,6 @@
-const viewer = new Marzipano.Viewer(document.getElementById('pano'));
+const viewer = new Marzipano.Viewer(
+  document.getElementById('pano')
+);
 
 const view = new Marzipano.RectilinearView();
 
@@ -10,11 +12,17 @@ let scenes = [];
 let currentIndex = 0;
 let currentScene = null;
 
-const sidebarList = document.getElementById("sidebarList");
+const sidebarList =
+  document.getElementById("sidebarList");
 
-const floorplan = document.getElementById("floorplan");
-const floorplanWrapper = document.getElementById("floorplanWrapper");
-const floorplanImage = document.getElementById("floorplanImage");
+const floorplan =
+  document.getElementById("floorplan");
+
+const floorplanWrapper =
+  document.getElementById("floorplanWrapper");
+
+const floorplanImage =
+  document.getElementById("floorplanImage");
 
 /* FLOORPLANS */
 
@@ -46,7 +54,8 @@ function buildUI() {
 
   scenes.forEach((scene, index) => {
 
-    const sideItem = document.createElement("div");
+    const sideItem =
+      document.createElement("div");
 
     sideItem.className = "item";
     sideItem.dataset.index = index;
@@ -59,15 +68,18 @@ function buildUI() {
 
 }
 
-/* FLOORPLAN */
+/* BUILD FLOORPLAN */
 
 function buildFloorplan() {
 
-  floorplanWrapper.querySelectorAll(".hotspot").forEach(h => h.remove());
+  floorplanWrapper
+    .querySelectorAll(".hotspot")
+    .forEach(h => h.remove());
 
   scenes.forEach((scene, index) => {
 
-    const dot = document.createElement("div");
+    const dot =
+      document.createElement("div");
 
     dot.className = "hotspot";
     dot.dataset.index = index;
@@ -101,9 +113,10 @@ function init() {
 
 function createScene(index) {
 
-  const source = Marzipano.ImageUrlSource.fromString(
-    "pano/" + scenes[index].file
-  );
+  const source =
+    Marzipano.ImageUrlSource.fromString(
+      "pano/" + scenes[index].file
+    );
 
   return viewer.createScene({
     source,
@@ -132,27 +145,31 @@ function goTo(index) {
 
 }
 
-/* UI */
+/* UPDATE UI */
 
 function updateUI(index) {
 
-  document.querySelectorAll("#sidebarList .item").forEach(el => {
+  document
+    .querySelectorAll("#sidebarList .item")
+    .forEach(el => {
 
-    el.classList.toggle(
-      "active",
-      parseInt(el.dataset.index) === index
-    );
+      el.classList.toggle(
+        "active",
+        parseInt(el.dataset.index) === index
+      );
 
-  });
+    });
 
-  document.querySelectorAll(".hotspot").forEach(el => {
+  document
+    .querySelectorAll(".hotspot")
+    .forEach(el => {
 
-    el.classList.toggle(
-      "active",
-      parseInt(el.dataset.index) === index
-    );
+      el.classList.toggle(
+        "active",
+        parseInt(el.dataset.index) === index
+      );
 
-  });
+    });
 
 }
 
@@ -162,49 +179,58 @@ function attachEvents() {
 
   /* SIDEBAR */
 
-  document.querySelectorAll("#sidebarList .item").forEach(item => {
+  document
+    .querySelectorAll("#sidebarList .item")
+    .forEach(item => {
 
-    item.onclick = () =>
-      goTo(parseInt(item.dataset.index));
-
-  });
-
-  /* HOTSPOTS */
-
-  document.querySelectorAll(".hotspot").forEach(h => {
-
-    h.onclick = () =>
-      goTo(parseInt(h.dataset.index));
-
-  });
-
-  /* FLOOR BUTTONS */
-
-  document.querySelectorAll(".floorBtn").forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-      const floor = btn.dataset.floor;
-
-      /* OPEN FLOORPLAN */
-
-      floorplan.classList.add("open");
-
-      /* CHANGE IMAGE */
-
-      floorplanImage.src = floorplans[floor];
-
-      /* ACTIVE BUTTON */
-
-      document.querySelectorAll(".floorBtn").forEach(b => {
-        b.classList.remove("active");
-      });
-
-      btn.classList.add("active");
+      item.onclick = () =>
+        goTo(parseInt(item.dataset.index));
 
     });
 
-  });
+  /* HOTSPOTS */
+
+  document
+    .querySelectorAll(".hotspot")
+    .forEach(h => {
+
+      h.onclick = () =>
+        goTo(parseInt(h.dataset.index));
+
+    });
+
+  /* FLOOR BUTTONS */
+
+  document
+    .querySelectorAll(".floorBtn")
+    .forEach(btn => {
+
+      btn.addEventListener("click", () => {
+
+        const floor = btn.dataset.floor;
+
+        /* OPEN FLOORPLAN */
+
+        floorplan.classList.add("open");
+
+        /* CHANGE IMAGE */
+
+        floorplanImage.src =
+          floorplans[floor] + "?v=" + Date.now();
+
+        /* ACTIVE BUTTON */
+
+        document
+          .querySelectorAll(".floorBtn")
+          .forEach(b => {
+            b.classList.remove("active");
+          });
+
+        btn.classList.add("active");
+
+      });
+
+    });
 
   /* CLOSE FLOORPLAN */
 
@@ -216,7 +242,10 @@ function attachEvents() {
     const clickedButton =
       e.target.closest(".floorBtn");
 
-    if (!clickedInsideFloorplan && !clickedButton) {
+    if (
+      !clickedInsideFloorplan &&
+      !clickedButton
+    ) {
       floorplan.classList.remove("open");
     }
 
@@ -228,10 +257,14 @@ function attachEvents() {
 
 floorplanWrapper.addEventListener("click", (e) => {
 
-  const rect = floorplanWrapper.getBoundingClientRect();
+  const rect =
+    floorplanWrapper.getBoundingClientRect();
 
-  const x = ((e.clientX - rect.left) / rect.width) * 100;
-  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  const x =
+    ((e.clientX - rect.left) / rect.width) * 100;
+
+  const y =
+    ((e.clientY - rect.top) / rect.height) * 100;
 
   console.log(
     `mapX: ${x.toFixed(1)}, mapY: ${y.toFixed(1)}`
