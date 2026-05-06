@@ -1,111 +1,216 @@
 const viewer = new Marzipano.Viewer(document.getElementById('pano'));
+
 const view = new Marzipano.RectilinearView();
-const geometry = new Marzipano.EquirectGeometry([{ width: 8000 }]);
+
+const geometry = new Marzipano.EquirectGeometry([
+  { width: 8000 }
+]);
 
 let scenes = [];
 let currentIndex = 0;
 let currentScene = null;
 
 const sidebarList = document.getElementById("sidebarList");
-const floorplan = document.getElementById("floorplan");
 
-const mapBtn = document.getElementById("mapBtn");
+const floorplan = document.getElementById("floorplan");
+const floorplanWrapper = document.getElementById("floorplanWrapper");
+const floorplanImage = document.getElementById("floorplanImage");
+
+/* FLOORPLANS */
+
+const floorplans = {
+  ground: "floorplan-maa.png",
+  floor1: "floorplan-1.png",
+  floor2: "floorplan-2.png",
+  floor3: "floorplan-3.png"
+};
 
 /* LOAD */
+
 fetch("rooms.json")
 .then(res => res.json())
 .then(data => {
+
   scenes = data;
+
   buildUI();
   buildFloorplan();
+
   init();
+
 });
 
-/* BUILD UI */
+/* BUILD SIDEBAR */
+
 function buildUI() {
+
   scenes.forEach((scene, index) => {
 
     const sideItem = document.createElement("div");
+
     sideItem.className = "item";
     sideItem.dataset.index = index;
+
     sideItem.textContent = scene.label;
+
     sidebarList.appendChild(sideItem);
 
   });
+
 }
 
 /* FLOORPLAN */
+
 function buildFloorplan() {
+
+  floorplanWrapper.querySelectorAll(".hotspot").forEach(h => h.remove());
+
   scenes.forEach((scene, index) => {
 
     const dot = document.createElement("div");
+
     dot.className = "hotspot";
     dot.dataset.index = index;
 
     dot.style.left = scene.mapX + "%";
     dot.style.top = scene.mapY + "%";
 
-    floorplan.appendChild(dot);
+    floorplanWrapper.appendChild(dot);
+
   });
+
 }
 
 /* INIT */
+
 function init() {
+
   currentScene = createScene(0);
-  currentScene.switchTo();
+
+  currentScene.switchTo({
+    transitionDuration: 700
+  });
+
+  updateUI(0);
 
   attachEvents();
+
 }
 
-/* SCENE */
+/* CREATE SCENE */
+
 function createScene(index) {
-  const source = Marzipano.ImageUrlSource.fromString("pano/" + scenes[index].file);
-  return viewer.createScene({ source, geometry, view });
+
+  const source = Marzipano.ImageUrlSource.fromString(
+    "pano/" + scenes[index].file
+  );
+
+  return viewer.createScene({
+    source,
+    geometry,
+    view
+  });
+
 }
 
-/* NAV */
+/* NAVIGATION */
+
 function goTo(index) {
+
   if (index === currentIndex) return;
 
   const scene = createScene(index);
-  scene.switchTo();
+
+  scene.switchTo({
+    transitionDuration: 700
+  });
 
   currentScene = scene;
   currentIndex = index;
 
   updateUI(index);
 
-  /* 🔥 sulje kartta kun valitaan huone */
-  floorplan.classList.remove("open");
 }
 
 /* UI */
+
 function updateUI(index) {
 
   document.querySelectorAll("#sidebarList .item").forEach(el => {
-    el.classList.toggle("active", parseInt(el.dataset.index) === index);
+
+    el.classList.toggle(
+      "active",
+      parseInt(el.dataset.index) === index
+    );
+
   });
 
   document.querySelectorAll(".hotspot").forEach(el => {
-    el.classList.toggle("active", parseInt(el.dataset.index) === index);
+
+    el.classList.toggle(
+      "active",
+      parseInt(el.dataset.index) === index
+    );
+
   });
+
 }
 
 /* EVENTS */
+
 function attachEvents() {
 
-  // sidebar
+  /* SIDEBAR */
+
   document.querySelectorAll("#sidebarList .item").forEach(item => {
-    item.onclick = () => goTo(parseInt(item.dataset.index));
+
+    item.onclick = () =>
+      goTo(parseInt(item.dataset.index));
+
   });
 
-  // floorplan
+  /* HOTSPOTS */
+
   document.querySelectorAll(".hotspot").forEach(h => {
-    h.onclick = () => goTo(parseInt(h.dataset.index));
+
+    h.onclick = () =>
+      goTo(parseInt(h.dataset.index));
+
   });
 
-  // 🔥 MAP TOGGLE
-  mapBtn.addEventListener("click", () => {
-    floorplan.classList.toggle("open");
+  /* FLOOR BUTTONS */
+
+  document.querySelectorAll(".floorBtn").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+      const floor = btn.dataset.floor;
+
+      floorplanImage.src = floorplans[floor];
+
+      document.querySelectorAll(".floorBtn").forEach(b => {
+        b.classList.remove("active");
+      });
+
+      btn.classList.add("active");
+
+    });
+
   });
+
 }
+
+/* COORDINATE HELPER */
+
+floorplanWrapper.addEventListener("click", (e) => {
+
+  const rect = floorplanWrapper.getBoundingClientRect();
+
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+  console.log(
+    `mapX: ${x.toFixed(1)}, mapY: ${y.toFixed(1)}`
+  );
+
+});
