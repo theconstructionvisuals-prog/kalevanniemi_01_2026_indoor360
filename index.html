@@ -23,15 +23,19 @@ body {
 #playBtn {
   position: fixed;
   right: 20px;
-  bottom: 100px;
+  bottom: 80px;
   z-index: 15;
+
   width: 44px;
   height: 44px;
+
   border-radius: 50%;
+  border: none;
+
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(6px);
+
   color: white;
-  border: none;
   cursor: pointer;
 }
 
@@ -40,8 +44,11 @@ body {
   position: fixed;
   top: 80px;
   left: 0;
+
   padding-left: 12px;
+
   z-index: 20;
+
   display: flex;
   flex-direction: column;
 }
@@ -57,82 +64,174 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   gap: 6px;
-  padding: 6px;
-  background: rgba(0,0,0,0.2);
-  backdrop-filter: blur(4px);
+
+  padding: 8px 10px;
+
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(6px);
+
+  border-radius: 10px;
+
   max-height: 70vh;
   overflow-y: auto;
 }
 
 #sidebarList .item {
   width: 100%;
+
   text-align: left;
   font-size: 12px;
+
   color: rgba(255,255,255,0.5);
+
   cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#sidebarList .item:hover {
+  color: rgba(255,255,255,0.8);
 }
 
 #sidebarList .item.active {
   color: white;
+  transform: translateX(4px);
 }
-
-/* ❌ TIMELINE POISTETTU */
 
 /* MAP BUTTON */
 #mapBtn {
   position: fixed;
+
+  right: 20px;
   bottom: 20px;
-  left: 20px;
-  z-index: 25;
+
+  z-index: 40;
+
   background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+
   color: white;
+
   border: none;
+  border-radius: 8px;
+
   padding: 10px 14px;
-  border-radius: 6px;
+
   cursor: pointer;
 }
 
-/* FLOORPLAN (slide up panel) */
+/* FLOORPLAN OVERLAY */
 #floorplan {
   position: fixed;
-  left: 0;
-  bottom: -100%;
-  width: 100%;
-  max-height: 65vh;
 
-  background: rgba(0,0,0,0.95);
+  right: 20px;
+  bottom: 70px;
+
+  width: 420px;
+  height: 70vh;
+
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(10px);
+
+  border-radius: 18px;
+
   padding: 20px;
+  box-sizing: border-box;
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  transition: bottom 0.35s ease;
-  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(20px) scale(0.96);
+
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+
+  z-index: 30;
 }
 
 #floorplan.open {
-  bottom: 0;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
 }
 
-#floorplan img {
-  max-width: 420px;
+/* FLOORPLAN IMAGE WRAPPER */
+#floorplanWrapper {
+  position: relative;
+
   width: 100%;
+  max-width: 100%;
+}
+
+#floorplanWrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* HOTSPOTS */
 .hotspot {
   position: absolute;
+
   width: 14px;
   height: 14px;
+
   background: white;
+
   border-radius: 50%;
+
   transform: translate(-50%, -50%);
+
   cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.hotspot:hover {
+  transform: translate(-50%, -50%) scale(1.15);
 }
 
 .hotspot.active {
   background: red;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  #sidebar {
+    top: 20px;
+    left: 20px;
+  }
+
+  #floorplan {
+    right: 10px;
+    left: 10px;
+    width: auto;
+    height: 65vh;
+
+    bottom: 70px;
+  }
+
+  #mapBtn {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  #playBtn {
+    right: 10px;
+    bottom: 60px;
+  }
 }
 </style>
 </head>
@@ -141,19 +240,21 @@ body {
 
 <div id="pano"></div>
 
+<!-- SIDEBAR -->
 <div id="sidebar">
   <div class="sidebar-title">Tilat</div>
   <div id="sidebarList"></div>
 </div>
 
-<!-- 🔥 UUSI NAPPI -->
-<button id="mapBtn">Kartta</button>
-
-<!-- 🔥 FLOORPLAN PANEL -->
+<!-- FLOORPLAN -->
 <div id="floorplan">
-  <img src="floorplan.png">
+  <div id="floorplanWrapper">
+    <img src="floorplan.png">
+  </div>
 </div>
 
+<!-- BUTTONS -->
+<button id="mapBtn">Kartta</button>
 <button id="playBtn">▶</button>
 
 <script src="https://unpkg.com/marzipano/dist/marzipano.js"></script>
