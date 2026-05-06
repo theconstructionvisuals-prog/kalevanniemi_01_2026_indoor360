@@ -6,6 +6,7 @@
 <title>360 Indoor Viewer</title>
 
 <style>
+
 body {
   margin: 0;
   overflow: hidden;
@@ -19,27 +20,8 @@ body {
   height: 100vh;
 }
 
-/* PLAY */
-#playBtn {
-  position: fixed;
-  right: 20px;
-  bottom: 80px;
-  z-index: 15;
-
-  width: 44px;
-  height: 44px;
-
-  border-radius: 50%;
-  border: none;
-
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(6px);
-
-  color: white;
-  cursor: pointer;
-}
-
 /* SIDEBAR */
+
 #sidebar {
   position: fixed;
   top: 80px;
@@ -93,28 +75,32 @@ body {
     transform 0.2s ease;
 }
 
-#sidebarList .item:hover {
-  color: rgba(255,255,255,0.8);
-}
-
 #sidebarList .item.active {
   color: white;
   transform: translateX(4px);
 }
 
-/* MAP BUTTON */
-#mapBtn {
+/* FLOOR BUTTONS */
+
+#floorButtons {
   position: fixed;
 
-  right: 20px;
+  left: 20px;
   bottom: 20px;
 
-  z-index: 40;
+  z-index: 50;
 
-  background: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.floorBtn {
+  background: rgba(0,0,0,0.35);
   backdrop-filter: blur(6px);
 
-  color: white;
+  color: rgba(255,255,255,0.7);
 
   border: none;
   border-radius: 8px;
@@ -122,22 +108,34 @@ body {
   padding: 10px 14px;
 
   cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-/* FLOORPLAN OVERLAY */
+.floorBtn.active {
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+/* FLOORPLAN */
+
 #floorplan {
   position: fixed;
 
   right: 20px;
-  bottom: 70px;
+  top: 50%;
 
-  width: 420px;
-  height: 70vh;
+  transform:
+    translateY(-50%)
+    translateX(20px)
+    scale(0.96);
 
-  background: transparent;
+  width: 50vw;
+  max-width: 900px;
 
-  padding: 20px;
-  box-sizing: border-box;
+  height: 85vh;
 
   display: flex;
   justify-content: center;
@@ -145,8 +143,6 @@ body {
 
   opacity: 0;
   pointer-events: none;
-
-  transform: translateY(20px) scale(0.96);
 
   transition:
     opacity 0.28s ease,
@@ -158,26 +154,40 @@ body {
 #floorplan.open {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0) scale(1);
+
+  transform:
+    translateY(-50%)
+    translateX(0)
+    scale(1);
 }
 
-/* FLOORPLAN IMAGE WRAPPER */
+/* WRAPPER */
+
 #floorplanWrapper {
   position: relative;
 
   width: 100%;
-  max-width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #floorplanWrapper img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  width: auto;
   height: auto;
+
   display: block;
 
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 /* HOTSPOTS */
+
 .hotspot {
   position: absolute;
 
@@ -205,24 +215,20 @@ body {
     0 0 0 rgba(255,216,77,0.7);
 }
 
-.hotspot:hover {
-  transform: translate(-50%, -50%) scale(1.15);
-}
-
-/* ACTIVE HOTSPOT */
 .hotspot.active {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 
   background: #ff3b30;
 
   box-shadow:
-    0 0 18px rgba(255,59,48,0.8);
+    0 0 22px rgba(255,59,48,0.9);
 
   z-index: 2;
 }
 
 /* PULSE */
+
 @keyframes pulse {
 
   0% {
@@ -232,7 +238,7 @@ body {
 
   70% {
     box-shadow:
-      0 0 0 12px rgba(255,216,77,0);
+      0 0 0 14px rgba(255,216,77,0);
   }
 
   100% {
@@ -242,33 +248,27 @@ body {
 }
 
 /* MOBILE */
+
 @media (max-width: 768px) {
 
-  #sidebar {
-    top: 20px;
-    left: 20px;
-  }
-
   #floorplan {
-    right: 10px;
-    left: 10px;
+    width: 95vw;
+    height: 70vh;
 
-    width: auto;
-    height: 65vh;
-
-    bottom: 70px;
+    right: 2.5vw;
   }
 
-  #mapBtn {
-    right: 10px;
+  #floorButtons {
+    left: 10px;
     bottom: 10px;
   }
 
-  #playBtn {
-    right: 10px;
-    bottom: 60px;
+  #sidebar {
+    top: 20px;
+    left: 10px;
   }
 }
+
 </style>
 </head>
 
@@ -277,21 +277,43 @@ body {
 <div id="pano"></div>
 
 <!-- SIDEBAR -->
+
 <div id="sidebar">
   <div class="sidebar-title">Tilat</div>
   <div id="sidebarList"></div>
 </div>
 
+<!-- FLOOR BUTTONS -->
+
+<div id="floorButtons">
+
+  <button class="floorBtn active">
+    Pohjakuva
+  </button>
+
+  <button class="floorBtn">
+    1. kerros
+  </button>
+
+  <button class="floorBtn">
+    2. kerros
+  </button>
+
+  <button class="floorBtn">
+    3. kerros
+  </button>
+
+</div>
+
 <!-- FLOORPLAN -->
-<div id="floorplan">
+
+<div id="floorplan" class="open">
+
   <div id="floorplanWrapper">
     <img src="floorplan.png">
   </div>
-</div>
 
-<!-- BUTTONS -->
-<button id="mapBtn">Kartta</button>
-<button id="playBtn">▶</button>
+</div>
 
 <script src="https://unpkg.com/marzipano/dist/marzipano.js"></script>
 <script src="app.js"></script>
