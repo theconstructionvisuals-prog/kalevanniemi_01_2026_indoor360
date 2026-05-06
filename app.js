@@ -186,7 +186,15 @@ function attachEvents() {
 
       const floor = btn.dataset.floor;
 
+      /* OPEN FLOORPLAN */
+
+      floorplan.classList.add("open");
+
+      /* CHANGE IMAGE */
+
       floorplanImage.src = floorplans[floor];
+
+      /* ACTIVE BUTTON */
 
       document.querySelectorAll(".floorBtn").forEach(b => {
         b.classList.remove("active");
@@ -195,6 +203,22 @@ function attachEvents() {
       btn.classList.add("active");
 
     });
+
+  });
+
+  /* CLOSE FLOORPLAN */
+
+  document.addEventListener("click", (e) => {
+
+    const clickedInsideFloorplan =
+      floorplan.contains(e.target);
+
+    const clickedButton =
+      e.target.closest(".floorBtn");
+
+    if (!clickedInsideFloorplan && !clickedButton) {
+      floorplan.classList.remove("open");
+    }
 
   });
 
