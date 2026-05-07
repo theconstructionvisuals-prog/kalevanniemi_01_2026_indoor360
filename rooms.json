@@ -26,5 +26,19 @@
     "floor": "floor2",
     "mapX": 70,
     "mapY": 65
+  },
+ {
+    "file": "viikko11_26.jpg",
+    "label": "Yläaula",
+    "floor": "floor3",
+    "mapX": 55,
+    "mapY": 120
+  },
+ {
+    "file": "viikko09_26.jpg",
+    "label": "Luokkatilat",
+    "floor": "floor3",
+    "mapX": 160,
+    "mapY": 85
   }
 ]
