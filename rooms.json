@@ -8,35 +8,35 @@
   },
   {
     "file": "viikko03_26.jpg",
-    "label": "Aulatilat",
+    "label": "1. krs. - aulatilat",
     "floor": "floor1",
     "mapX": 55,
     "mapY": 45
   },
     {
     "file": "viikko13_26.jpg",
-    "label": "Liikuntahalli",
+    "label": "1. krs. - liikuntahalli",
     "floor": "floor1",
     "mapX": 70,
     "mapY": 60
   },
   {
     "file": "viikko05_26.jpg",
-    "label": "Katsomoportaat",
+    "label": "2. krs. - katsomoportaat",
     "floor": "floor2",
     "mapX": 70,
     "mapY": 65
   },
  {
     "file": "viikko11_26.jpg",
-    "label": "Yläaula",
+    "label": "3. krs. - yläaula",
     "floor": "floor3",
     "mapX": 55,
     "mapY": 80
   },
  {
     "file": "viikko09_26.jpg",
-    "label": "Luokkatilat",
+    "label": "3. krs - luokkatilat",
     "floor": "floor3",
     "mapX": 20,
     "mapY": 85
