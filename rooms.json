@@ -13,6 +13,13 @@
     "mapX": 55,
     "mapY": 45
   },
+    {
+    "file": "viikko13_26.jpg",
+    "label": "Liikuntahalli",
+    "floor": "floor1",
+    "mapX": 150,
+    "mapY": 100
+  },
   {
     "file": "viikko05_26.jpg",
     "label": "Katsomoportaat",
