@@ -208,9 +208,26 @@ function attachEvents() {
 
       btn.addEventListener("click", () => {
 
+        const clickedFloor =
+          btn.dataset.floor;
+
+        /* TOGGLE CLOSE */
+
+        if (
+          floorplan.classList.contains("open") &&
+          currentFloor === clickedFloor
+        ) {
+
+          floorplan.classList.remove("open");
+
+          btn.classList.remove("active");
+
+          return;
+        }
+
         /* SET ACTIVE FLOOR */
 
-        currentFloor = btn.dataset.floor;
+        currentFloor = clickedFloor;
 
         /* OPEN FLOORPLAN */
 
@@ -226,7 +243,7 @@ function attachEvents() {
 
         buildFloorplan();
 
-        /* ACTIVE BUTTON */
+        /* ACTIVE BUTTONS */
 
         document
           .querySelectorAll(".floorBtn")
@@ -254,7 +271,15 @@ function attachEvents() {
       !clickedInsideFloorplan &&
       !clickedButton
     ) {
+
       floorplan.classList.remove("open");
+
+      document
+        .querySelectorAll(".floorBtn")
+        .forEach(b => {
+          b.classList.remove("active");
+        });
+
     }
 
   });
