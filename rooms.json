@@ -17,8 +17,8 @@
     "file": "viikko13_26.jpg",
     "label": "Liikuntahalli",
     "floor": "floor1",
-    "mapX": 150,
-    "mapY": 100
+    "mapX": 70,
+    "mapY": 60
   },
   {
     "file": "viikko05_26.jpg",
@@ -32,13 +32,13 @@
     "label": "Yläaula",
     "floor": "floor3",
     "mapX": 55,
-    "mapY": 120
+    "mapY": 80
   },
  {
     "file": "viikko09_26.jpg",
     "label": "Luokkatilat",
     "floor": "floor3",
-    "mapX": 160,
+    "mapX": 20,
     "mapY": 85
   }
 ]
