@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="fi">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>360 Indoor Viewer</title>
 
 <style>
@@ -24,6 +26,7 @@ body {
 
 #sidebar {
   position: fixed;
+
   top: 80px;
   left: 0;
 
@@ -35,12 +38,41 @@ body {
   flex-direction: column;
 }
 
+/* TITLE */
+
 .sidebar-title {
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  margin-bottom: 12px;
-  color: white;
+  font-size: 11px;
+
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.92);
+
+  margin-bottom: 18px;
+
+  padding-bottom: 10px;
+  padding-left: 2px;
+
+  font-weight: 500;
+
+  position: relative;
 }
+
+.sidebar-title::after {
+  content: "";
+
+  position: absolute;
+
+  left: 2px;
+  bottom: 0;
+
+  width: 42px;
+  height: 1px;
+
+  background: rgba(255,255,255,0.22);
+}
+
+/* ROOM LIST */
 
 #sidebarList {
   display: flex;
@@ -77,6 +109,7 @@ body {
 
 #sidebarList .item.active {
   color: white;
+
   transform: translateX(4px);
 }
 
@@ -314,8 +347,13 @@ body {
 <!-- SIDEBAR -->
 
 <div id="sidebar">
-  <div class="sidebar-title">Tilat</div>
+
+  <div class="sidebar-title">
+    TILAT
+  </div>
+
   <div id="sidebarList"></div>
+
 </div>
 
 <!-- FLOOR BUTTONS -->
