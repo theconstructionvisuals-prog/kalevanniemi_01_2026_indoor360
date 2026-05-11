@@ -1,44 +1,30 @@
 [
   {
-    "file": "viikko01_26.jpg",
-    "label": "Ulko-ovi",
+    "file": "tie.jpg",
+    "label": "Alatie",
     "floor": "ground",
     "mapX": 30,
     "mapY": 50
   },
   {
-    "file": "viikko03_26.jpg",
-    "label": "1. krs. - aulatilat",
-    "floor": "floor1",
+    "file": "alapiha.jpg",
+    "label": "Alapiha",
+    "floor": "ground",
     "mapX": 55,
     "mapY": 45
   },
     {
-    "file": "viikko13_26.jpg",
-    "label": "1. krs. - liikuntahalli",
-    "floor": "floor1",
-    "mapX": 70,
-    "mapY": 60
-  },
-  {
-    "file": "viikko05_26.jpg",
-    "label": "2. krs. - katsomoportaat",
-    "floor": "floor2",
-    "mapX": 70,
-    "mapY": 65
-  },
- {
-    "file": "viikko11_26.jpg",
-    "label": "3. krs. - yläaula",
-    "floor": "floor3",
-    "mapX": 55,
+    "file": "omenapuu.jpg",
+    "label": "Omenapuut",
+    "floor": "ground",
+    "mapX": 80,
     "mapY": 80
   },
- {
-    "file": "viikko09_26.jpg",
-    "label": "3. krs - luokkatilat",
-    "floor": "floor3",
-    "mapX": 20,
-    "mapY": 85
+  {
+    "file": "yläpiha.jpg",
+    "label": "Yläpiha",
+    "floor": "ground",
+    "mapX": 70,
+    "mapY": 65
   }
-]
+ ]
