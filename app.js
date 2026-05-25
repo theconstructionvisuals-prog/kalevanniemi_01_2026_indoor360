@@ -4,16 +4,11 @@ const viewer = new Marzipano.Viewer(
 
 /* VIEW */
 
-const view = new Marzipano.RectilinearView(
-  {
-    yaw: 0,
-    pitch: 0,
-    fov: 1.85
-  },
-  {
-    maxResolution: 4096
-  }
-);
+const view = new Marzipano.RectilinearView({
+  yaw: 0,
+  pitch: 0,
+  fov: 1.85
+});
 
 /* GEOMETRY */
 
