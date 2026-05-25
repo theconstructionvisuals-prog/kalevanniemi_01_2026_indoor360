@@ -1,30 +1,95 @@
 [
   {
-    "file": "tie.jpg",
-    "label": "Alatie",
+    "file": "nli_kirkko-1.jpg",
+    "label": "Hautausmaa",
     "floor": "ground",
     "mapX": 30,
     "mapY": 50
   },
   {
-    "file": "alapiha.jpg",
-    "label": "Alapiha",
+    "file": "nli_kirkko-2.jpg",
+    "label": "Hautausmaa 2",
     "floor": "ground",
-    "mapX": 55,
-    "mapY": 45
-  },
-    {
-    "file": "omenapuu.jpg",
-    "label": "Omenapuut",
-    "floor": "ground",
-    "mapX": 80,
-    "mapY": 80
+    "mapX": 30,
+    "mapY": 50
   },
   {
-    "file": "yläpiha.jpg",
-    "label": "Yläpiha",
+    "file": "nli_kirkko-3.jpg",
+    "label": "Sisäänkäynti",
     "floor": "ground",
-    "mapX": 70,
-    "mapY": 65
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-11.jpg",
+    "label": "Kirkon piha",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-12.jpg",
+    "label": "Näköalapaviljonki",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-13.jpg",
+    "label": "Näkymä paviljongista",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-4.jpg",
+    "label": "Kirkon eteinen",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-5.jpg",
+    "label": "Kirkkourut",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-6.jpg",
+    "label": "Vasen reuna",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  
+  {
+    "file": "nli_kirkko-7.jpg",
+    "label": "Keskikäytävä",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-8.jpg",
+    "label": "Alttari",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  {
+    "file": "nli_kirkko-9.jpg",
+    "label": "Alttari, oikea reuna",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
+  },
+  
+  {
+    "file": "nli_kirkko-10.jpg",
+    "label": "Kirkkourut 2",
+    "floor": "ground",
+    "mapX": 30,
+    "mapY": 50
   }
  ]
