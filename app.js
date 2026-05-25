@@ -2,7 +2,20 @@ const viewer = new Marzipano.Viewer(
   document.getElementById('pano')
 );
 
-const view = new Marzipano.RectilinearView();
+/* VIEW */
+
+const view = new Marzipano.RectilinearView(
+  {
+    yaw: 0,
+    pitch: 0,
+    fov: 1.85
+  },
+  {
+    maxResolution: 4096
+  }
+);
+
+/* GEOMETRY */
 
 const geometry = new Marzipano.EquirectGeometry([
   { width: 8000 }
@@ -55,6 +68,8 @@ fetch("rooms.json")
 /* BUILD SIDEBAR */
 
 function buildUI() {
+
+  sidebarList.innerHTML = "";
 
   scenes.forEach((scene, index) => {
 
@@ -111,6 +126,12 @@ function init() {
 
   currentScene = createScene(0);
 
+  view.setParameters({
+    yaw: 0,
+    pitch: 0,
+    fov: 1.85
+  });
+
   currentScene.switchTo({
     transitionDuration: 700
   });
@@ -145,6 +166,14 @@ function goTo(index) {
   if (index === currentIndex) return;
 
   const scene = createScene(index);
+
+  /* RESET VIEW */
+
+  view.setParameters({
+    yaw: 0,
+    pitch: 0,
+    fov: 1.85
+  });
 
   scene.switchTo({
     transitionDuration: 700
@@ -302,5 +331,7 @@ floorplanWrapper.addEventListener("click", (e) => {
   console.log(
     `mapX: ${x.toFixed(1)}, mapY: ${y.toFixed(1)}`
   );
+
+});
 
 });
