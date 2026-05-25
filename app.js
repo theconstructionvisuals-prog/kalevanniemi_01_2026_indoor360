@@ -5,9 +5,7 @@ const viewer = new Marzipano.Viewer(
 /* VIEW */
 
 const view = new Marzipano.RectilinearView({
-  yaw: 0,
-  pitch: 0,
-  fov: 1.85
+  fov: 1.5
 });
 
 /* GEOMETRY */
@@ -64,8 +62,6 @@ fetch("rooms.json")
 
 function buildUI() {
 
-  sidebarList.innerHTML = "";
-
   scenes.forEach((scene, index) => {
 
     const sideItem =
@@ -121,12 +117,6 @@ function init() {
 
   currentScene = createScene(0);
 
-  view.setParameters({
-    yaw: 0,
-    pitch: 0,
-    fov: 1.85
-  });
-
   currentScene.switchTo({
     transitionDuration: 700
   });
@@ -161,14 +151,6 @@ function goTo(index) {
   if (index === currentIndex) return;
 
   const scene = createScene(index);
-
-  /* RESET VIEW */
-
-  view.setParameters({
-    yaw: 0,
-    pitch: 0,
-    fov: 1.85
-  });
 
   scene.switchTo({
     transitionDuration: 700
