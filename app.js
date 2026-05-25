@@ -3,7 +3,7 @@ const viewer = new Marzipano.Viewer(
 );
 
 const view = new Marzipano.RectilinearView({
-  fov: 1.5
+  fov: 1.6
 });
 
 const geometry = new Marzipano.EquirectGeometry([
