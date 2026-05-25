@@ -3,43 +3,43 @@
     "file": "nli_kirkko-1.jpg",
     "label": "Hautausmaa",
     "floor": "ground",
-    "mapX": 80,
-    "mapY": 25
+    "mapX": 90,
+    "mapY": 51
   },
   {
     "file": "nli_kirkko-2.jpg",
     "label": "Hautausmaa 2",
     "floor": "ground",
-    "mapX": 70,
-    "mapY": 35
+    "mapX": 78,
+    "mapY": 52
   },
   {
     "file": "nli_kirkko-3.jpg",
     "label": "Sisäänkäynti",
     "floor": "ground",
-    "mapX": 30,
-    "mapY": 30
+    "mapX": 56,
+    "mapY": 59
   },
   {
     "file": "nli_kirkko-11.jpg",
     "label": "Kirkon piha",
     "floor": "ground",
-    "mapX": 20,
-    "mapY": 25
+    "mapX": 31,
+    "mapY": 49
   },
   {
     "file": "nli_kirkko-12.jpg",
     "label": "Näköalapaviljonki",
     "floor": "ground",
-    "mapX": 20,
-    "mapY": 20
+    "mapX": 16,
+    "mapY": 41
   },
   {
     "file": "nli_kirkko-13.jpg",
     "label": "Näkymä paviljongista",
     "floor": "ground",
-    "mapX": 15,
-    "mapY": 15
+    "mapX": 13,
+    "mapY": 40
   },
   {
     "file": "nli_kirkko-4.jpg",
