@@ -188,18 +188,13 @@ body {
 #floorplan {
   position: fixed;
 
-  right: 20px;
-  top: 50%;
+  right: 24px;
+  bottom: 24px;
 
-  transform:
-    translateY(-50%)
-    translateX(20px)
-    scale(0.96);
+  width: 42vw;
+  max-width: 760px;
 
-  width: 50vw;
-  max-width: 900px;
-
-  height: 85vh;
+  height: 78vh;
 
   display: flex;
   justify-content: center;
@@ -207,6 +202,10 @@ body {
 
   opacity: 0;
   pointer-events: none;
+
+  transform:
+    translateY(20px)
+    scale(0.96);
 
   transition:
     opacity 0.28s ease,
@@ -220,8 +219,7 @@ body {
   pointer-events: auto;
 
   transform:
-    translateY(-50%)
-    translateX(0)
+    translateY(0)
     scale(1);
 }
 
@@ -328,10 +326,11 @@ body {
 @media (max-width: 768px) {
 
   #floorplan {
-    width: 95vw;
-    height: 70vh;
+    width: 92vw;
+    height: 62vh;
 
-    right: 2.5vw;
+    right: 4vw;
+    bottom: 14px;
   }
 
   #floorButtons {
@@ -398,7 +397,7 @@ body {
 </div>
 
 <script src="https://unpkg.com/marzipano/dist/marzipano.js"></script>
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 
 </body>
 </html>
