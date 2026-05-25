@@ -3,7 +3,7 @@ const viewer = new Marzipano.Viewer(
 );
 
 const view = new Marzipano.RectilinearView({
-  fov: 1.6
+  fov: 1.5
 });
 
 const geometry = new Marzipano.EquirectGeometry([
@@ -30,13 +30,14 @@ const floorplanWrapper =
 const floorplanImage =
   document.getElementById("floorplanImage");
 
+const floorplanInner =
+  document.getElementById("floorplanInner");
+
 /* FLOORPLANS */
 
 const floorplans = {
   ground: "floorplan-maa.png",
-  floor1: "floorplan-1.png",
-  floor2: "floorplan-2.png",
-  floor3: "floorplan-3.png"
+  floor1: "floorplan-1.png"
 };
 
 /* LOAD */
@@ -78,13 +79,11 @@ function buildUI() {
 
 function buildFloorplan() {
 
-  floorplanWrapper
+  floorplanInner
     .querySelectorAll(".hotspot")
     .forEach(h => h.remove());
 
   scenes.forEach((scene, index) => {
-
-    /* SHOW ONLY ACTIVE FLOOR */
 
     if (scene.floor !== currentFloor) return;
 
@@ -99,7 +98,7 @@ function buildFloorplan() {
 
     dot.onclick = () => goTo(index);
 
-    floorplanWrapper.appendChild(dot);
+    floorplanInner.appendChild(dot);
 
   });
 
@@ -191,8 +190,6 @@ function updateUI(index) {
 
 function attachEvents() {
 
-  /* SIDEBAR */
-
   document
     .querySelectorAll("#sidebarList .item")
     .forEach(item => {
@@ -202,8 +199,6 @@ function attachEvents() {
 
     });
 
-  /* FLOOR BUTTONS */
-
   document
     .querySelectorAll(".floorBtn")
     .forEach(btn => {
@@ -212,8 +207,6 @@ function attachEvents() {
 
         const clickedFloor =
           btn.dataset.floor;
-
-        /* TOGGLE CLOSE */
 
         if (
           floorplan.classList.contains("open") &&
@@ -227,25 +220,15 @@ function attachEvents() {
           return;
         }
 
-        /* SET ACTIVE FLOOR */
-
         currentFloor = clickedFloor;
 
-        /* OPEN FLOORPLAN */
-
         floorplan.classList.add("open");
-
-        /* CHANGE IMAGE */
 
         floorplanImage.src =
           floorplans[currentFloor] +
           "?v=" + Date.now();
 
-        /* REBUILD HOTSPOTS */
-
         buildFloorplan();
-
-        /* ACTIVE BUTTONS */
 
         document
           .querySelectorAll(".floorBtn")
@@ -258,8 +241,6 @@ function attachEvents() {
       });
 
     });
-
-  /* CLOSE FLOORPLAN */
 
   document.addEventListener("click", (e) => {
 
@@ -290,10 +271,10 @@ function attachEvents() {
 
 /* COORDINATE HELPER */
 
-floorplanWrapper.addEventListener("click", (e) => {
+floorplanImage.addEventListener("click", (e) => {
 
   const rect =
-    floorplanWrapper.getBoundingClientRect();
+    floorplanImage.getBoundingClientRect();
 
   const x =
     ((e.clientX - rect.left) / rect.width) * 100;
@@ -301,8 +282,12 @@ floorplanWrapper.addEventListener("click", (e) => {
   const y =
     ((e.clientY - rect.top) / rect.height) * 100;
 
+  navigator.clipboard.writeText(
+    `"mapX": ${x.toFixed(1)}, "mapY": ${y.toFixed(1)}`
+  );
+
   console.log(
-    `mapX: ${x.toFixed(1)}, mapY: ${y.toFixed(1)}`
+    `COPIED → mapX: ${x.toFixed(1)}, mapY: ${y.toFixed(1)}`
   );
 
 });
