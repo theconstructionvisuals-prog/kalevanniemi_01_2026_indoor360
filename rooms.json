@@ -44,21 +44,21 @@
   {
     "file": "nli_kirkko-4.jpg",
     "label": "Kirkon eteinen",
-    "floor": "ground",
+    "floor": "floor1",
     "mapX": 30,
     "mapY": 50
   },
   {
     "file": "nli_kirkko-5.jpg",
     "label": "Kirkkourut",
-    "floor": "ground",
+    "floor": "floor1",
     "mapX": 30,
     "mapY": 50
   },
   {
     "file": "nli_kirkko-6.jpg",
     "label": "Vasen reuna",
-    "floor": "ground",
+    "floor": "floor1",
     "mapX": 30,
     "mapY": 50
   },
@@ -66,21 +66,21 @@
   {
     "file": "nli_kirkko-7.jpg",
     "label": "Keskikäytävä",
-    "floor": "ground",
+    "floor": "floor1",
     "mapX": 30,
     "mapY": 50
   },
   {
     "file": "nli_kirkko-8.jpg",
     "label": "Alttari",
-    "floor": "ground",
+    "floor": "floor1",
     "mapX": 30,
     "mapY": 50
   },
   {
     "file": "nli_kirkko-9.jpg",
     "label": "Alttari, oikea reuna",
-    "floor": "ground",
+    "floor": "floor1",
     "mapX": 30,
     "mapY": 50
   },
@@ -88,7 +88,7 @@
   {
     "file": "nli_kirkko-10.jpg",
     "label": "Kirkkourut 2",
-    "floor": "ground",
+    "floor": "floor1",
     "mapX": 30,
     "mapY": 50
   }
