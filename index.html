@@ -238,6 +238,14 @@ body {
   align-items: center;
 }
 
+/* INNER */
+
+#floorplanInner {
+  position: relative;
+
+  display: inline-block;
+}
+
 /* FLOORPLAN IMAGE */
 
 #floorplanWrapper img {
@@ -368,8 +376,6 @@ body {
     1. KERROS
   </button>
 
- 
-
 </div>
 
 <!-- FLOORPLAN -->
@@ -377,13 +383,22 @@ body {
 <div id="floorplan">
 
   <div id="floorplanWrapper">
-    <img id="floorplanImage" src="floorplan-maa.png">
+
+    <div id="floorplanInner">
+
+      <img
+        id="floorplanImage"
+        src="floorplan-maa.png"
+      >
+
+    </div>
+
   </div>
 
 </div>
 
 <script src="https://unpkg.com/marzipano/dist/marzipano.js"></script>
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 
 </body>
 </html>
