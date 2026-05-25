@@ -2,13 +2,9 @@ const viewer = new Marzipano.Viewer(
   document.getElementById('pano')
 );
 
-/* VIEW */
-
 const view = new Marzipano.RectilinearView({
   fov: 1.5
 });
-
-/* GEOMETRY */
 
 const geometry = new Marzipano.EquirectGeometry([
   { width: 8000 }
@@ -308,7 +304,5 @@ floorplanWrapper.addEventListener("click", (e) => {
   console.log(
     `mapX: ${x.toFixed(1)}, mapY: ${y.toFixed(1)}`
   );
-
-});
 
 });
