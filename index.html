@@ -113,6 +113,12 @@ body {
   transform: translateX(4px);
 }
 
+/* SIDEBAR TOGGLE */
+
+#sidebarToggle {
+  display: none;
+}
+
 /* FLOOR BUTTONS */
 
 #floorButtons {
@@ -341,6 +347,41 @@ body {
   #sidebar {
     top: 20px;
     left: 10px;
+
+    transition: transform 0.3s ease;
+  }
+
+  #sidebar.collapsed {
+    transform: translateX(-88%);
+  }
+
+  #sidebarToggle {
+    display: flex;
+
+    position: fixed;
+
+    top: 20px;
+    left: 20px;
+
+    width: 42px;
+    height: 42px;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999;
+
+    border: none;
+    border-radius: 12px;
+
+    background: rgba(0,0,0,0.42);
+    backdrop-filter: blur(12px);
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
   }
 }
 
@@ -350,6 +391,12 @@ body {
 <body>
 
 <div id="pano"></div>
+
+<!-- SIDEBAR TOGGLE -->
+
+<button id="sidebarToggle">
+  ☰
+</button>
 
 <!-- SIDEBAR -->
 
@@ -398,6 +445,25 @@ body {
 
 <script src="https://unpkg.com/marzipano/dist/marzipano.js"></script>
 <script src="app.js?v=9"></script>
+
+<script>
+
+const sidebar = document.getElementById("sidebar");
+const sidebarToggle = document.getElementById("sidebarToggle");
+
+sidebarToggle.addEventListener("click", () => {
+
+  sidebar.classList.toggle("collapsed");
+
+  if (sidebar.classList.contains("collapsed")) {
+    sidebarToggle.innerHTML = "→";
+  } else {
+    sidebarToggle.innerHTML = "☰";
+  }
+
+});
+
+</script>
 
 </body>
 </html>
