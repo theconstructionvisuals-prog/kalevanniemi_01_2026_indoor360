@@ -3,8 +3,8 @@
     "file": "nli_kirkko-1.jpg",
     "label": "Hautausmaa",
     "floor": "ground",
-    "mapX": 90,
-    "mapY": 51
+    "mapX": 94,
+    "mapY": 58
   },
   {
     "file": "nli_kirkko-2.jpg",
@@ -18,71 +18,71 @@
     "label": "Sisäänkäynti",
     "floor": "ground",
     "mapX": 56,
-    "mapY": 59
+    "mapY": 67
   },
   {
     "file": "nli_kirkko-11.jpg",
     "label": "Kirkon piha",
     "floor": "ground",
-    "mapX": 31,
-    "mapY": 49
+    "mapX": 32,
+    "mapY": 55
   },
   {
     "file": "nli_kirkko-12.jpg",
     "label": "Näköalapaviljonki",
     "floor": "ground",
-    "mapX": 16,
-    "mapY": 41
+    "mapX": 13,
+    "mapY": 32
   },
   {
     "file": "nli_kirkko-13.jpg",
     "label": "Näkymä paviljongista",
     "floor": "ground",
-    "mapX": 13,
-    "mapY": 40
+    "mapX": 10,
+    "mapY": 28
   },
   {
     "file": "nli_kirkko-4.jpg",
     "label": "Kirkon eteinen",
     "floor": "floor1",
-    "mapX": 12,
-    "mapY": 48
+    "mapX": 14,
+    "mapY": 45
   },
   {
     "file": "nli_kirkko-5.jpg",
     "label": "Kirkkourut",
     "floor": "floor1",
-    "mapX": 28,
-    "mapY": 57
+    "mapX": 29,
+    "mapY": 60
   },
   {
     "file": "nli_kirkko-6.jpg",
     "label": "Vasen reuna",
     "floor": "floor1",
-    "mapX": 28,
-    "mapY": 36
+    "mapX": 32,
+    "mapY": 20
   },
   
   {
     "file": "nli_kirkko-7.jpg",
     "label": "Keskikäytävä",
     "floor": "floor1",
-    "mapX": 55,
+    "mapX": 51,
     "mapY": 49
   },
   {
     "file": "nli_kirkko-8.jpg",
     "label": "Alttari",
     "floor": "floor1",
-    "mapX": 86,
-    "mapY": 49
+    "mapX": 84,
+    "mapY": 51
   },
   {
     "file": "nli_kirkko-9.jpg",
     "label": "Alttari, oikea reuna",
     "floor": "floor1",
-    "mapX": 87,
-    "mapY": 61
+    "mapX": 83,
+    "mapY": 82
   },
   
   {
