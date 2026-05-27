@@ -1,12 +1,20 @@
 let viewer = null;
 
-const view = new Marzipano.RectilinearView({
-  fov: 1.5
-});
+/* VIEW */
 
-const geometry = new Marzipano.EquirectGeometry([
-  { width: 8000 }
-]);
+const view =
+  new Marzipano.RectilinearView({
+    yaw: 0,
+    pitch: 0,
+    fov: 1.5
+  });
+
+/* GEOMETRY */
+
+const geometry =
+  new Marzipano.EquirectGeometry([
+    { width: 8000 }
+  ]);
 
 let scenes = [];
 let currentIndex = 0;
@@ -15,6 +23,8 @@ let currentScene = null;
 /* ACTIVE FLOOR */
 
 let currentFloor = "ground";
+
+/* ELEMENTS */
 
 const sidebarList =
   document.getElementById("sidebarList");
@@ -41,10 +51,6 @@ const floorplans = {
 /* FORCE RESIZE */
 
 function forceResize() {
-
-  if (!viewer) return;
-
-  viewer.resize();
 
   window.dispatchEvent(
     new Event("resize")
@@ -83,10 +89,24 @@ function waitForVisible() {
 
 }
 
-/* LOAD */
+/* LOAD ROOMS */
 
 fetch("rooms.json")
-.then(res => res.json())
+
+.then(res => {
+
+  if (!res.ok) {
+
+    throw new Error(
+      "rooms.json not found"
+    );
+
+  }
+
+  return res.json();
+
+})
+
 .then(data => {
 
   scenes = data;
@@ -95,6 +115,15 @@ fetch("rooms.json")
   buildFloorplan();
 
   waitForVisible();
+
+})
+
+.catch(err => {
+
+  console.error(
+    "ROOMS LOAD ERROR:",
+    err
+  );
 
 });
 
@@ -108,7 +137,9 @@ function buildUI() {
       document.createElement("div");
 
     sideItem.className = "item";
-    sideItem.dataset.index = index;
+
+    sideItem.dataset.index =
+      index;
 
     sideItem.textContent =
       scene.label;
@@ -139,7 +170,9 @@ function buildFloorplan() {
       document.createElement("div");
 
     dot.className = "hotspot";
-    dot.dataset.index = index;
+
+    dot.dataset.index =
+      index;
 
     dot.style.left =
       scene.mapX + "%";
@@ -179,21 +212,21 @@ function init() {
     transitionDuration: 700
   });
 
+  currentIndex = 0;
+
   updateUI(0);
 
   attachEvents();
 
-  setTimeout(() => {
-    forceResize();
-  }, 300);
+  setTimeout(
+    forceResize,
+    300
+  );
 
-  setTimeout(() => {
-    forceResize();
-  }, 1000);
-
-  setTimeout(() => {
-    forceResize();
-  }, 2000);
+  setTimeout(
+    forceResize,
+    1000
+  );
 
 }
 
@@ -201,12 +234,18 @@ function init() {
 
 function createScene(index) {
 
+  const panoPath =
+    "pano/" +
+    scenes[index].file;
+
+  console.log(
+    "LOADING:",
+    panoPath
+  );
+
   const source =
     Marzipano.ImageUrlSource
-      .fromString(
-        "pano/" +
-        scenes[index].file
-      );
+      .fromString(panoPath);
 
   return viewer.createScene({
     source,
@@ -236,9 +275,10 @@ function goTo(index) {
 
   updateUI(index);
 
-  setTimeout(() => {
-    forceResize();
-  }, 100);
+  setTimeout(
+    forceResize,
+    100
+  );
 
 }
 
@@ -282,6 +322,8 @@ function updateUI(index) {
 
 function attachEvents() {
 
+  /* SIDEBAR */
+
   document
     .querySelectorAll(
       "#sidebarList .item"
@@ -297,6 +339,8 @@ function attachEvents() {
 
     });
 
+  /* FLOOR BUTTONS */
+
   document
     .querySelectorAll(
       ".floorBtn"
@@ -309,6 +353,8 @@ function attachEvents() {
 
           const clickedFloor =
             btn.dataset.floor;
+
+          /* CLOSE SAME FLOOR */
 
           if (
             floorplan.classList.contains("open") &&
@@ -357,14 +403,17 @@ function attachEvents() {
             "active"
           );
 
-          setTimeout(() => {
-            forceResize();
-          }, 300);
+          setTimeout(
+            forceResize,
+            300
+          );
 
         }
       );
 
     });
+
+  /* CLOSE FLOORPLAN OUTSIDE CLICK */
 
   document.addEventListener(
     "click",
@@ -452,7 +501,16 @@ floorplanImage.addEventListener(
 const resizeObserver =
   new ResizeObserver(() => {
 
-    forceResize();
+    clearTimeout(
+      window.__resizeTimer
+    );
+
+    window.__resizeTimer =
+      setTimeout(() => {
+
+        forceResize();
+
+      }, 100);
 
   });
 
@@ -460,7 +518,7 @@ resizeObserver.observe(
   document.getElementById("pano")
 );
 
-/* EXTRA MOBILE FIXES */
+/* MOBILE FIXES */
 
 window.addEventListener(
   "load",
@@ -474,11 +532,6 @@ window.addEventListener(
     setTimeout(
       forceResize,
       1000
-    );
-
-    setTimeout(
-      forceResize,
-      2000
     );
 
   }
