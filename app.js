@@ -2,6 +2,16 @@ const viewer = new Marzipano.Viewer(
   document.getElementById('pano')
 );
 
+function forceResize() {
+
+  viewer.resize();
+
+  window.dispatchEvent(
+    new Event("resize")
+  );
+
+}
+
 const view = new Marzipano.RectilinearView({
   fov: 1.5
 });
@@ -51,7 +61,15 @@ fetch("rooms.json")
   buildUI();
   buildFloorplan();
 
-  init();
+  setTimeout(() => {
+
+    init();
+
+    setTimeout(() => {
+      forceResize();
+    }, 500);
+
+  }, 300);
 
 });
 
@@ -120,6 +138,8 @@ function init() {
 
   attachEvents();
 
+  forceResize();
+
 }
 
 /* CREATE SCENE */
@@ -155,6 +175,10 @@ function goTo(index) {
   currentIndex = index;
 
   updateUI(index);
+
+  setTimeout(() => {
+    forceResize();
+  }, 100);
 
 }
 
@@ -238,6 +262,10 @@ function attachEvents() {
 
         btn.classList.add("active");
 
+        setTimeout(() => {
+          forceResize();
+        }, 300);
+
       });
 
     });
@@ -289,5 +317,34 @@ floorplanImage.addEventListener("click", (e) => {
   console.log(
     `COPIED → mapX: ${x.toFixed(1)}, mapY: ${y.toFixed(1)}`
   );
+
+});
+
+/* RESIZE OBSERVER */
+
+const resizeObserver =
+  new ResizeObserver(() => {
+
+    forceResize();
+
+  });
+
+resizeObserver.observe(
+  document.getElementById("pano")
+);
+
+/* EXTRA MOBILE FIXES */
+
+window.addEventListener("load", () => {
+
+  setTimeout(forceResize, 300);
+  setTimeout(forceResize, 1000);
+  setTimeout(forceResize, 2000);
+
+});
+
+window.addEventListener("orientationchange", () => {
+
+  setTimeout(forceResize, 500);
 
 });
